@@ -23,22 +23,21 @@ and improves decentralization.
 If you have any questions about the current state of KMC/KMCoin, want to become a
 validator for the server, or want to host your own server within the KMCoin network,
 please email TheKittyMine@proton.me
-
-       /\             /\
-      /#^\           / ^\
-     /#/ \\_________/ /*\\
-    /#/   \  ~~~~~~~~    \\
-   (#           ~~~~       )
-  (#   \ -[(0)] --- [(0)]-\ )
- (#                          )
-(##    -------  \`/   ----   )   Power to All People.
- (##  ---------      -------)    Never to government...
-  ###    ---   \___   --- )      Help those that help you.
-    ###                 )        Shared Community Value.
-       ####          )           Sic Semper Tyrannis.                       
-           ########
-
-
-           
+  
+       /\             /\  
+      /#^\           / ^\  
+     /#/ \\_________/ /*\\  
+    /#/   \  ~~~~~~~~    \\  
+   (#           ~~~~       )  
+  (#   \ -[(0)] --- [(0)]-\ )  
+ (#                          )  
+(##    -------  \`/   ----   )   Power to All People.  
+ (##  ---------      -------)    Never to government...  
+  ###    ---   \___   --- )      Help those that help you.  
+    ###                 )        Shared Community Value.  
+       ####          )           Sic Semper Tyrannis.  
+           ########  
+  
+  
     TheKittyMine loves you
            
