@@ -24,20 +24,15 @@ If you have any questions about the current state of KMC/KMCoin, want to become 
 validator for the server, or want to host your own server within the KMCoin network,
 please email TheKittyMine@proton.me
   
-       /\             /\  
-      /#^\           / ^\  
-     /#/ \\_________/ /*\\  
-    /#/   \  ~~~~~~~~    \\  
-   (#           ~~~~       )  
-  (#   \ -[(0)] --- [(0)]-\ )  
- (#                          )  
-(##    -------  \`/   ----   )   Power to All People.  
- (##  ---------      -------)    Never to government...  
-  ###    ---   \___   --- )      Help those that help you.  
-    ###                 )        Shared Community Value.  
-       ####          )           Sic Semper Tyrannis.  
-           ########  
-  
-  
-    TheKittyMine loves you
+
+
+Power to All People.  
+Never to government...  
+Help those that help you.  
+Shared Community Value.  
+Sic Semper Tyrannis.  
+
+
+
+TheKittyMine loves you
            
