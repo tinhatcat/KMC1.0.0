@@ -79,13 +79,20 @@ async def monitor_files(user):
             full_path = os.path.join(user_directories[user.id], file)
             
             if os.path.exists(full_path):
-                with open(full_path, 'rb') as f:
-                    file_content = f.read()
-                    file_hash = hashlib.md5(file_content).hexdigest()
+                try:
+                    with open(full_path, 'rb') as f:
+                        file_content = f.read()
+                        file_hash = hashlib.md5(file_content).hexdigest()
 
-                    if full_path not in file_hashes or file_hashes[full_path] != file_hash:
-                        file_hashes[full_path] = file_hash
-                        await send_discord_message(WEBHOOK_URL_KMC, MESSAGE)
+                        if full_path not in file_hashes or file_hashes[full_path] != file_hash:
+                            file_hashes[full_path] = file_hash
+                            await send_discord_message(WEBHOOK_URL_KMC, MESSAGE)
+                except PermissionError:
+                    logging.warning(f"Permission denied reading {full_path}, retrying in 5 seconds...")
+                    await asyncio.sleep(5)
+                    continue
+                except Exception as e:
+                    logging.error(f"Error reading {full_path}: {e}")
             else:
                 logging.warning(f"File not found: {full_path}")
 
@@ -102,11 +109,30 @@ async def send_file(user, file_path):
 
 
 async def send_discord_message(webhook_url, message):
-    """Send message to Discord via webhook."""
-    file_content = read_file_to_string(FILEPATH)
-    await asyncio.sleep(1)
-    webhook = DiscordWebhook(url=webhook_url, content=file_content)
-    webhook.execute()
+    """Send message to Discord via webhook with retry logic."""
+    max_retries = 2
+    retry_delay = 1
+    
+    for attempt in range(max_retries):
+        try:
+            file_content = read_file_to_string(FILEPATH)
+            await asyncio.sleep(1)
+            webhook = DiscordWebhook(url=webhook_url, content=file_content)
+            response = webhook.execute()
+            
+            # If successful, break out of retry loop
+            if hasattr(response, 'status_code') and response.status_code == 200:
+                return
+            elif response:  # If response exists but no status_code attribute
+                return
+                
+        except Exception as e:
+            logging.error(f"Webhook attempt {attempt + 1} failed: {e}")
+            
+        if attempt < max_retries - 1:  # Don't sleep on last attempt
+            await asyncio.sleep(retry_delay)
+    
+    logging.error(f"Failed to send webhook message after {max_retries} attempts")
 
  
 def read_file_to_string(filepath):
